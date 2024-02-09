@@ -1,16 +1,12 @@
-import FriendListItem from '../FriendListItem/FriendListItem';
-import { Item, List } from './FriendList.styled';
+import { FriendListItem } from '../FriendListItem/FriendListItem';
+import styles from './FriendList.module.css';
 
-export const FriendList = ({friends}) => {
+export const FriendList = ({ friends }) => {
   return (
-    <List>
-      {friends.map(({ id, avatar, name, isOnline }) => {
-        return (
-          <Item key={id}>
-            <FriendListItem avatar={avatar} name={name} isOnline={isOnline} />
-          </Item>
-        );
+    <ul className={styles.friendList}>
+      {friends.map(friend => {
+        return <FriendListItem friend={friend} key={friend.id} />;
       })}
-    </List>
+    </ul>
   );
 };

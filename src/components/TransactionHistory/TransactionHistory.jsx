@@ -1,32 +1,27 @@
-import { Title, Container, Td } from './TransactionHistory.styled';
+import styles from './TransactionHistory.module.css';
 
 export const TransactionHistory = ({ items }) => {
   return (
-    <Container>
+    <table className={styles.transactionHistory}>
       <thead>
         <tr>
-          <Title>Type</Title>
-          <Title>Amount</Title>
-          <Title>Currency</Title>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Currency</th>
         </tr>
       </thead>
 
       <tbody>
-        {items.map(({ id, type, amount, currency }, idx) => {
+        {items.map(({ id, type, amount, currency }) => {
           return (
-            <tr
-              key={id}
-              style={{
-                backgroundColor: idx % 2 === 0 ? 'white' : 'lightgray',
-              }}
-            >
-              <Td>{type}</Td>
-              <Td>{amount}</Td>
-              <Td>{currency}</Td>
+            <tr key={id}>
+              <td>{type}</td>
+              <td>{amount}</td>
+              <td>{currency}</td>
             </tr>
           );
         })}
       </tbody>
-    </Container>
+    </table>
   );
 };

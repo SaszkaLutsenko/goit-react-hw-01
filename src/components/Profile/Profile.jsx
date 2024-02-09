@@ -1,42 +1,34 @@
-import {
-    Container,
-    Avatar,
-    StatsContainer,
-    StatsItem,
-    Description,
-    Info,
-  } from './Profile.styled';
-  
-  export const Profile = ({
-    username,
-    tag,
-    location,
-    avatar,
-    stats: { followers, views, likes },
-  }) => {
-    return (
-      <Container>
-        <Description>
-          <Avatar src={avatar} alt="User avatar" />
-          <Info>{username}</Info>
-          <Info>@{tag}</Info>
-          <Info>{location}</Info>
-        </Description>
-  
-        <StatsContainer>
-          <StatsItem>
-            <span>Followers </span>
-            <span>{followers}</span>
-          </StatsItem>
-          <StatsItem>
-            <span>Views </span>
-            <span>{views}</span>
-          </StatsItem>
-          <StatsItem>
-            <span>Likes </span>
-            <span>{likes}</span>
-          </StatsItem>
-        </StatsContainer>
-      </Container>
-    );
-  };
+import styles from './Profile.module.css';
+
+export const Profile = ({
+  username,
+  tag,
+  stats: { followers, views, likes },
+  avatar,
+  location,
+}) => {
+  return (
+    <div className={styles.profile}>
+      <div className={styles.description}>
+        <img src={avatar} alt="User avatar" className={styles.avatar} width="100" />
+        <p className={styles.name}>{username}</p>
+        <p className={styles.tag}>@{tag}</p>
+        <p className={styles.location}>{location}</p>
+      </div>
+      <ul className={styles.stats}>
+        <li>
+          <span className={styles.label}>Followers</span>
+          <span className={styles.value}>{followers}</span>
+        </li>
+        <li>
+          <span className={styles.label}>Views</span>
+          <span className={styles.value}>{views}</span>
+        </li>
+        <li>
+          <span className={styles.label}>Likes</span>
+          <span className={styles.value}>{likes}</span>
+        </li>
+      </ul>
+    </div>
+  );
+};
